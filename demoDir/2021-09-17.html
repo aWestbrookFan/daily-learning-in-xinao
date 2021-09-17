@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        padding: 0 0;
+        margin: 0 0;
+        padding-top: 10px;
+      }
+      #app {
+        width: 100vw;
+        height: 100vh;
+      }
+      .app-container > div {
+        outline: 1px dashed rgba(22, 2, 245, 0.2);
+      }
+      .app-container {
+        background-color: rgba(22, 2, 245, 0.1);
+      }
+      .sonComponent {
+        background-color: salmon;
+      }
+    </style>
+    <title>2021-09-17</title>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+  <script src="../js/vue@2.6.14.js"></script>
+  <script type="text/javascript">
+    const ComponentA = {
+      data() {
+        return {
+          message1: '子组件的样式',
+          sameProperty: 'son'
+        }
+      },
+      props: {
+        componentAT: {
+          type: 'String',
+          default: 'index'
+        },
+        componentFn: {
+          type: 'Function',
+          default: () => {}
+        }
+      },
+      created() {
+        console.log('子组件 created')
+      },
+      mounted() {
+        console.log('子组件 mounted')
+        setTimeout(() => {
+          this.message1 = 'message1修改'
+        }, 3000)
+      },
+      methods: {
+        addClick: function () {
+          this.componentFn(this)
+        }
+      },
+      render(h) {
+        return h(
+          'div',
+          {
+            style: 'font-size:40px;width:100%;',
+            class: 'sonComponent',
+            on: {
+              click: () => {
+                this.addClick()
+              }
+            }
+          },
+          this.message1 + this.componentAT
+        )
+      }
+    }
+    const VUE = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello vue.js.',
+        sameProperty: 'father'
+      },
+      components: {
+        ComponentA
+      },
+      created() {
+        console.log('父组件 created')
+      },
+      mounted() {
+        console.log('父组件 mounted')
+        setTimeout(() => {
+          this.message = 'sasaasasasas'
+        }, 1000)
+      },
+      methods: {
+        fatherFn: function (e) {
+          console.log(e)
+        }
+      },
+      render(h) {
+        console.log('当前组件重新渲染')
+        return h(
+          'div',
+          {
+            style:
+              'width:80vw;height:200px;margin: 120px auto;text-align:center',
+            class: 'app-container'
+          },
+          [
+            this.message,
+            h('p', '又新增一个'),
+            h('span', 'span 元素'),
+            h(ComponentA, {
+              props: {
+                componentAT: 'bar',
+                componentFn: this.fatherFn
+              }
+            })
+          ]
+        )
+      }
+    })
+    window.VUE = VUE
+  </script>
+  <script src="./2021-09-17.js"></script>
+</html>

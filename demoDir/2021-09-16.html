@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        padding: 0 0;
+        margin: 0 0;
+      }
+      p {
+        user-select: auto;
+      }
+    </style>
+    <title>2021-09-16</title>
+  </head>
+  <body>
+    <p draggable="true">能拖拽的元素</p>
+  </body>
+  <script>
+    // setTimeout(function () {
+    //   let array = new Array(1000000).fill({ a: 'swsw' })
+    //   setTimeout(function () {
+    //     array = []
+    //   }, 2000)
+    // }, 3000)
+      
+    function foo() {
+      const array = new Array(10000000).fill({ a: 'swsw' })
+      console.log(array)
+    }
+    foo()
+
+    // 
+
+    // 测试发现 切换tab页面会加快 垃圾回收
+    // 闭包测试
+    // function makeFunc() {
+    //   const array = new Array(10000000).fill({ a: 'swswswswswswswsw' })
+    //   function displayName() {
+    //     const innerArray = new Array(100000).fill({ a: '' })
+    //     console.log(array, innerArray)
+    //   }
+    //   return displayName
+    // }
+
+    // var myFunc = makeFunc()
+    // myFunc()
+  </script>
+</html>

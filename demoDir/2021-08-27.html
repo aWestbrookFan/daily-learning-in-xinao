@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2021-08-27</title>
+
+    <style>
+      html {
+        background: lightgrey;
+        height: 100%;
+        overflow: hidden;
+      }
+      body {
+        height: 100%;
+        background: whitesmoke;
+        overflow: scroll;
+        width: 80%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 3em;
+        font: 100%/1.4 serif;
+        border: 1px solid rgba(0, 0, 0, 0.25);
+      }
+      p {
+        margin: 0 0 1.5em;
+      }
+
+      body::-webkit-scrollbar {
+        width: 1em;
+      }
+
+      /* css hack  */
+      /* 火狐 */
+      body {
+        scrollbar-width: thin;
+        scrollbar-color: #333 transparent;
+      }
+
+      body::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      }
+
+      body::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem deleniti
+      accusantium quasi ab ad officia cupiditate sed aliquam nobis expedita
+      velit dolorum perspiciatis pariatur nam vero et magnam soluta tempora!
+    </div>
+    <div>
+      Eveniet deserunt consequatur porro molestiae nulla optio quis totam libero
+      iste nemo odit eum facilis sapiente. Harum similique cupiditate voluptas
+      ea optio sunt molestias eius ab qui obcaecati nesciunt id?
+    </div>
+    <div>
+      Necessitatibus delectus sint vitae eos quasi optio esse dignissimos enim
+      laborum ipsum harum perspiciatis eaque. Magnam fugiat delectus neque
+      laboriosam in accusamus a veniam inventore asperiores consequatur nihil
+      quae quo.
+    </div>
+    <div>
+      Eligendi quaerat nesciunt sint nobis qui? Temporibus maiores esse
+      molestiae hic cum culpa sed recusandae dolore sequi modi. Quos illum
+      debitis odio consequatur voluptatum error aliquam rem similique officia
+      recusandae.
+    </div>
+    <div>
+      Ex suscipit earum reiciendis eaque dolorem inventore accusantium modi
+      voluptatum saepe cum quam tempora autem corrupti illum deleniti iure rerum
+      mollitia quo ducimus soluta ea! Illum aliquid consectetur vitae quod?
+    </div>
+    <div>
+      Minus rem tempora quo. Deleniti mollitia dignissimos laborum quis quos
+      facilis dolore soluta error provident recusandae veniam minus consequatur
+      blanditiis. Facere tempore praesentium soluta fugiat quia eligendi dolores
+      ullam doloribus!
+    </div>
+    <div>
+      Aut nulla perferendis officiis accusamus ut aspernatur hic possimus amet
+      blanditiis incidunt repudiandae ullam inventore ipsam recusandae nihil
+      provident facilis totam quibusdam natus eligendi optio quia sapiente rerum
+      quos illo?
+    </div>
+    <div>
+      Porro soluta nisi impedit voluptatem ex accusantium facilis amet quod
+      blanditiis quia similique totam enim id ratione minus quo modi sequi nam
+      dicta iste aliquid itaque velit accusamus quibusdam consequuntur.
+    </div>
+    <div>
+      Ab assumenda in ad nesciunt recusandae labore voluptates vero suscipit
+      tenetur ullam sint beatae odio harum quo aperiam quas temporibus pariatur
+      consectetur saepe eveniet minus voluptatem atque iusto similique
+      repudiandae?
+    </div>
+    <div>
+      In enim odit repellat maxime harum eum expedita fuga vel eaque quaerat
+      optio hic sapiente eveniet neque dolorum eligendi pariatur possimus
+      aliquid minus officiis mollitia quia voluptates sunt nulla est!
+    </div>
+  </body>
+
+  <script>
+    async function async1() {
+      console.log('async1 start')
+      await async2()
+      console.log('async1 end')
+    }
+
+    async function async2() {
+      console.log('async2')
+    }
+ 
+    console.log('script start')
+   
+    setTimeout(function () {
+      console.log('setTimeout')
+    }, 0)
+    
+    async1()
+
+    new Promise((resolve) => {
+      console.log('promise1')
+      resolve()
+    }).then(function () {
+      console.log('promise2')
+    })
+
+    console.log('script end')
+  </script>
+
+  <script>
+    console.log('script2 ')
+  </script>
+</html>

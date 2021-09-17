@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0 0;
+        padding: 0 0;
+      }
+      body {
+        padding: 20px 10px;
+        box-sizing: border-box;
+      }
+      body > div {
+        outline: 1px rgb(47, 3, 128) dashed;
+        height: 85px;
+        /* width: 200px; */
+        margin-top: 30px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .demo1 {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+      }
+
+      .demo3 {
+        overflow: hidden;
+        max-height: 80px;
+        line-height: 20px;
+      }
+
+      .demo4 {
+        position: relative;
+        line-height: 21px;
+        /* height: 40px; */
+        overflow: hidden;
+      }
+      .demo4::after {
+        content: '...';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 0 20px 0 10px;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 如何用css 和 js来实现多行文本溢出省略效果  -->
+    <!-- 纯css 方法  -->
+    <!-- Y: 响应式截断  文本溢出范围才显示省略号，否则不显示省略号  省略号显示位置刚好 -->
+    <!-- N: 兼容性一般 -->
+    <div class="demo demo1"></div>
+    <!-- js实现 -->
+    <!-- Y:无兼容问题 - 响应式截断 - 文本溢出范围才显示省略号，否则不显示省略号 -->
+    <!-- N: 需要 JS 实现，背离展示和行为相分离原则、文本为中英文混合时，省略号显示位置略有偏差 -->
+    <div class="demo demo2"></div>
+    <!-- 多行文本溢出不显示省略号  css 方式-->
+    <!-- Y: 多行文本溢出不显示省略号 -->
+    <!-- N： 没有省略号 -->
+    <div class="demo demo3"></div>
+    <!-- 伪元素 + 定位实现多行省略 -->
+    <div class="demo demo4"></div>
+  </body>
+  <script>
+    let testStr =
+      new Array(50).fill('很长很长很长很长很长很长').join('') + '的字符串'
+    document.querySelectorAll('.demo').forEach((item) => {
+      item.innerHTML = testStr
+    })
+    // demo2 的 js脚本
+    {
+      ;(function () {
+        let text = testStr
+        const totalTextLen = testStr.length
+        const formatStr = () => {
+          const ele = document.getElementsByClassName('demo')[1]
+          const lineNum = 4
+          const baseWidth = window.getComputedStyle(ele).width
+          const baseFontSize = window.getComputedStyle(ele).fontSize
+          const lineWidth = +baseWidth.slice(0, -2)
+
+          // 所计算的strNum为元素内部一行可容纳的字数(不区分中英文)
+          const strNum = Math.floor(lineWidth / +baseFontSize.slice(0, -2))
+
+          let content = ''
+
+          // 多行可容纳总字数
+          const totalStrNum = Math.floor(strNum * lineNum)
+
+          const lastIndex = totalStrNum - totalTextLen
+
+          if (totalTextLen > totalStrNum) {
+            content = text.slice(0, lastIndex - 3).concat('...')
+          } else {
+            content = text
+          }
+          ele.innerHTML = content
+        }
+
+        formatStr()
+
+        window.onresize = () => {
+          formatStr()
+        }
+      })()
+    }
+  </script>
+  <!--  -->
+  <script>
+    //立即执行函数 形成一个作用域
+    // 第一个 console. undefined  因为 var 变量提升
+    // 第二个 console的是window上的a  即顶层对象上的a  10 顶层作用域上var 定义的值默认会挂在window上
+    // 第三个 20 这个应该没问题的 因为a在之前不断地赋值重新申明
+    var a = 10
+    ;(function () {
+      //  undefined
+      console.log(a)
+      a = 5
+      //   a = 5
+      //   console.log(a)
+      //  拿外层的10
+      console.log(window.a)
+      var a = 20
+      //   20
+      console.log(a)
+    })()
+  </script>
+</html>

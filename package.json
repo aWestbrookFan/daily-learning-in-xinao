@@ -1,0 +1,18 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "demo测试",
+  "main": "1-8-25.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generateTemplate": "node ./template/index.js"
+  },
+  "keywords": [
+    "ss"
+  ],
+  "author": "sww",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2"
+  }
+}

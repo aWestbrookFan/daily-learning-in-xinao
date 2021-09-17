@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2021-09-15</title>
+    <style>
+      * {
+        padding: 0 0;
+        margin: 0 0;
+        outline: 1px dashed rebeccapurple;
+      }
+      .container {
+        width: 100%;
+        height: 100vh;
+      }
+      .father {
+        height: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        color: white;
+      }
+      .left {
+        width: 300px;
+        transition: 1s ease-in-out;
+        background-color: rgb(19, 73, 55);
+      }
+      .right {
+        flex: 1;
+        background-color: salmon;
+      }
+      .buttonLeft {
+        background-color: slateblue;
+        cursor: pointer;
+      }
+      span {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="father">
+        <div class="left">
+          <span class="buttonLeft1">按钮</span>
+        </div>
+        <div class="right"></div>
+      </div>
+
+      <div class="father">
+        <div class="left son1"></div>
+        <div class="right">
+          <span class="buttonLeft2">按钮</span>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // 效果1
+    ;(function () {
+      let flag = false
+      document
+        .querySelector('.buttonLeft1')
+        .addEventListener('click', function () {
+          if (!flag) {
+            document.querySelector('.left').style.width = '32px'
+            flag = true
+            return
+          }
+          flag = false
+          document.querySelector('.left').style.width = '300px'
+        })
+    })()
+
+    // 效果2
+    ;(function () {
+      let flag = false
+      document
+        .querySelector('.buttonLeft2')
+        .addEventListener('click', function () {
+          if (!flag) {
+            document.querySelector('.son1').style.width = '0px'
+            flag = true
+            return
+          }
+          flag = false
+          document.querySelector('.son1').style.width = '300px'
+        })
+    })()
+
+    // webpack 配置 api代理 解决跨域问题
+    // 本质上是提供一个中间服务器，webpack-dev-server 实现请求转发给其他服务器
+    {
+      // devServer: {
+      //     hot:true, // 它是热更新：只更新改变的组件或者模块，不会整体刷新页面
+      //     open: true, // 是否自动打开浏览器
+      //     proxy: { // 配置代理
+      //       "/x": { // 这是请求接口中要替换的标识
+      //         target: "https://api.bilibili.com", // 被替换的目标地址，即把 /api 替换成这个
+      //         pathRewrite: {"^/api" : ""},
+      //         secure: false, // 若代理的地址是https协议，需要配置这个属性
+      //       },
+      //       '/api': {
+      //         target: 'http://localhost:3000', // 这是本地用node写的一个服务，用webpack-dev-server起的服务默认端口是8080
+      //         pathRewrite: {"/api" : ""}, // 后台在转接的时候url中是没有 /api 的
+      //         changeOrigin: true, // 加了这个属性，那后端收到的请求头中的host是目标地址 target
+      //       },
+      //     }
+    }
+    // History和hash的区别
+    // 本质上就在于 —— 改变视图的同时不会向后端发出请求
+    // hash: 地址栏 URL 中的#符号  改变 hash 不会重新加载页面。
+    // 利用了 HTML5 History Interface 中新增的pushState()和replaceState()方法。
+    // （需要特定浏览器支持） 这两个方法应用于浏览器的历史记录栈，
+    // 在当前已有的back、forward、go的基础之上，
+    // 它们提供了对历史记录进行修改的功能。
+    // 只是当它们执行修改时，虽然改变了当前的 URL， 但浏览器不会立即向后端发送请求。
+
+    //  实习做过手机端的一个使用history 从浏览器点击链接进入到app中某个页面之后
+    //  进入到是详情页 但是回退需要回到首页 但是呢 因为本地历史记录栈里面只有当前页面
+    //  所以用了history 往里面插入了一个首页地址
+
+
+  </script>
+</html>

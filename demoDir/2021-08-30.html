@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2021-08-30</title>
+  </head>
+  <body></body>
+  <script>
+    // 立即执行函数
+    ;(function (index) {
+      console.log(index['0']())
+    })({
+      0: function () {
+        console.log(0)
+      },
+      1: function () {
+        console.log(1)
+      }
+    })
+
+    // 42351
+    {
+      setTimeout(() => {
+        console.log(1)
+      }, 20)
+      setTimeout(() => {
+        console.log(2)
+      }, 0)
+      setTimeout(() => {
+        console.log(3)
+      }, 10)
+      setTimeout(() => {
+        console.log(5)
+      }, 10)
+      console.log(4)
+    }
+  </script>
+</html>

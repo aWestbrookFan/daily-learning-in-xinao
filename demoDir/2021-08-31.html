@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2021-08-31</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  let Wconsole = window.console.log
+  console.log = function () {}
+  // 原型理解
+  function Dog(name, color) {
+    this.name = name
+    this.color = color
+  }
+  function Cat(name, color) {
+    this.name = name
+    this.color = color
+    this.meow = function () {
+      console.log(1)
+    }
+  }
+  // 方法中meow需要在每个实例中再定义一遍 比较消耗
+  let cat1 = new Cat('test', 'red')
+  let cat2 = new Cat('test1', 'red1')
+  // JavaScript 继承机制的设计思想就是，原型对象的所有属性和方法
+  // 都能被实例对象共享。也就是说，如果属性和方法定义在原型上，那么所有实例对象就能共享，
+  // 不仅节省了内存，还体现了实例对象之间的联系。
+  console.log(cat1.__proto__ === Cat.prototype)
+  console.log(Cat === Cat.prototype.constructor)
+  //
+  Cat.prototype.age = 12
+  console.log(cat1)
+
+  // 原型对象的作用，就是定义所有实例对象共享的属性和方法。
+  // 这也是它被称为原型对象的原因，而实例对象可以视作从原型对象衍生出来的子对象。
+  console.log(Cat.prototype)
+  
+  console.log = Wconsole
+  // 个人分析: 传入promise里面的函数会执行
+  //  打印 1、2 当resolve()执行时候 从pending变为fulfilled 此时状态进行改变
+  //  then 作为微任务可执行 放入事件队列中 继续执行同步代码 打印出 4 最后打印3
+  // 1 2 4 3
+  const promise = new Promise((resolve) => {
+    console.log(1)
+    resolve()
+    console.log(2)
+  })
+  promise.then(() => {
+    console.log(3)
+  })
+  console.log(4)
+
+  // 个人分析
+  // 一旦状态改变，就不会再变，任何时候都可以得到这个结果。Promise对象的状态改变，
+  // 只有两种可能：从pending变为fulfilled和从pending变为rejected。
+  // 只要这两种情况发生，状态就凝固了，不会再变了，会一直保持这个结果。
+  // 所以：结果是 then: success1
+  const promise1 = new Promise((resolve) => {
+    resolve('success1')
+    reject('error')
+    resolve('success2')
+  })
+
+  promise1
+    .then((res) => {
+      console.log('then:', res)
+    })
+    .catch((err) => {
+      console.log('catch:', err)
+    })
+</script>
