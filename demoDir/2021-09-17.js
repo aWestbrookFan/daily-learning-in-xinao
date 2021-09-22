@@ -17,4 +17,3 @@ console.log(unboundGetX())
 
 const boundGetX = unboundGetX.bind(module1, 'testVal')
 console.log({ a: boundGetX })
-console.log(boundGetX.call({ x: 'swsw' }))

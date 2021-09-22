@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        padding: 0 0;
+        margin: 0 0;
+      }
+    </style>
+    <title>2021-09-18</title>
+  </head>
+  <body></body>
+  <script src="2021-09-18.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+  />
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/element-ui@2.15.6/lib/index.js"></script>
+  <div id="app">
+    <template>
+      <el-table
+        :data="tableData"
+        height="250"
+        border
+        style="width: 100%"
+        ref="table"
+      >
+        <el-table-column prop="date" label="日期" width="480" fixed="left">
+        </el-table-column>
+        <el-table-column prop="name" label="姓名" width="180">
+        </el-table-column>
+        <el-table-column prop="address" label="地址"  fixed="right">
+        </el-table-column>
+      </el-table>
+    </template>
+  </div>
+</html>
+<script>
+  var Main = {
+    data() {
+      return {
+        tableData: [
+          {
+            date: '2016-05-03',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-02',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-04',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-01',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-08',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-06',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-07',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-03',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-02',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-04',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-01',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-08',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-06',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          }
+        ]
+      }
+    },
+    mounted() {
+      this.tableData = [
+        ...this.tableData,
+        ...this.tableData,
+        ...this.tableData,
+        ...this.tableData
+      ]
+      // 获取需要绑定的table
+      this.$nextTick(() => {
+        this.dom = this.$refs.table.bodyWrapper
+        this.dom.addEventListener('scroll', () => {
+          let scrollTop = this.dom.scrollTop
+          // 变量windowHeight是可视区的高度
+          let windowHeight = this.dom.clientHeight || this.dom.clientHeight
+          // 变量scrollHeight是滚动条的总高度
+          let scrollHeight = this.dom.scrollHeight || this.dom.scrollHeight
+          if (Math.ceil(scrollTop) + windowHeight > scrollHeight) {
+            // 获取到的不是全部数据 当滚动到底部 继续获取新的数据
+            console.log(1)
+          }
+        })
+      })
+    }
+  }
+  var Ctor = Vue.extend(Main)
+  new Ctor().$mount('#app')
+</script>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        * {
+            padding: 0 0;
+            margin: 0 auto;
+        }
+
+        /* max-width 属性用来给元素设置最大宽度值.
+       定义了max-width的元素会在达到max-width值之后避免进一步按照width属性设置变大. */
+        .input-test {
+            transition: all 2s ease-in-out;
+            max-width: 80px;
+        }
+
+        .input-test:focus {
+            max-width: 200px;
+        }
+
+        .checkBox-style {
+            width: 500px;
+            height: 500px;
+            padding: 20px;
+        }
+
+        .checkBox-style input {
+            width: 25px;
+            height: 25px;
+        }
+    </style>
+    <title>2021-09-20</title>
+</head>
+
+<body>
+    <input style="width: 200px!important;" class="input-test"></input>
+
+    <div id="app"></div>
+</body>
+<script src="2021-09-20.js"></script>
+<script>
+    // vue 如何配置环境变量
+    // answer: 环境变量的配置 像是基于webpack这样打包工具（node.js process.env）的环境配置，
+    // 1. 命令行设置环境变量 NODE_ENV 例如 NDOE_DEV=development 是将当前环境写入到  process.env当中
+    // 2. .env文件来配置环境变量 在运行scripts 将一些环境写入  然后读取对应的.env文件 
+    // vue_cli需要对应的VUE_APP_ENV
+
+    // array 转树
+    const array1 = [
+        { 'id': 2, 'title': '第一级1', 'parentid': 0 },
+        { 'id': 3, 'title': '第二级1', 'parentid': 2 },
+        { 'id': 4, 'title': '第二级2', 'parentid': 2 },
+        { 'id': 5, 'title': '第三级1', 'parentid': 4 },
+        { 'id': 6, 'title': '第三级2', 'parentid': 3 }
+    ]
+    let flag = 0
+    function buildTree(arr, parentId, childrenArray) {
+        arr.forEach((item) => {
+            if (item.parentid === parentId) {
+                flag++
+                item.children = [];
+                buildTree(arr, item.id, item.children);
+                childrenArray.push(item);
+                if (flag === array1.length) return;
+            }
+        });
+    }
+    function arrayToTree(input, parentId) {
+        const array = [];
+        buildTree(input, parentId, array);
+        return array.length > 0 ? (array.length > 1 ? array : array[0]) : {};
+    }
+    const obj = arrayToTree(array1, 0);
+    console.log(obj);
+
+    // 实现自定义组件的v-model 使用
+    // 允许一个自定义组件在使用 v-model 
+    // 时定制 prop 和 event。默认情况下，一个组件上的 v-model 会把 value 用作 prop 且把 input 用作 event，
+    // 但是一些输入类型比如单选框和复选框按钮可能想使用 value prop 来达到不同的目的。
+    // 使用 model 选项可以回避这些情况产生的冲突。
+    // 链接地址  https://ru66o.csb.app/
+
+</script>
+
+</html>
