@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            padding: 0 0;
+            margin: 0 0;
+        }
+    </style>
+    <title>2021-09-23</title>
+</head>
+
+<body>
+</body>
+<script src="2021-09-23.js"></script>
+<script>
+    // 判断是否有权限,当有权限时候展示wrapper,要求使用指令实现
+    // 地址 https://codesandbox.io/s/angry-northcutt-cbxrm?file=/src/main.js
+
+    // 代码回滚的几种方式(git)（这里基本没有概念,大佬有空可以讲讲）
+        // 使用git log命令，查看分支提交历史，确认需要回退的版本
+        // 使用git reset --hard commit_id命令，进行版本回退
+        // 使用git push origin命令，推送至远程分支
+        // 2. 快捷指令 回退上个版本 git reset --hard HEAD^  回退上个版本
+        // 3. 撤销
+
+    // 查找数组对象中age大于18的对象
+    const array = [{ name: '1', age: 2 }, { name: '2', age: 21 }, { name: '16', age: 18 }, { name: '12', age: '32' }, { name: '19', age: 16 }]
+    const result = array.filter(value => +value.age > 18)
+    console.log(result)
+
+    // 判断object 是否是空对象（多种）
+    const object = { a: 2, b: 3 }
+    // 这三个基本一样
+    console.log(Object.keys(object).length)
+    console.log(Object.values(object).length)
+    console.log(Object.entries(object).length)
+    console.log(JSON.stringify(object) === '{}')
+</script>
+
+</html>

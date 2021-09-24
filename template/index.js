@@ -8,6 +8,7 @@ const errorLog = (error) => console.log(chalk.red(`${error}`))
 const {currentDay} = require('./util')
 //引入模板
 const {htmlTemplate, JsTemplate} = require('./template')
+log('默认按回车键生成js和html文件，输入js或者Html只生成对应文件')
 //生成文件
 const generateFile = (path, data) => {
     if (fs.existsSync(path)) {
