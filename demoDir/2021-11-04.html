@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        padding: 0 0;
+        margin: 0 0;
+      }
+
+      .container {
+        width: 100%;
+        height: 400px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        /* justify-content: space-around; */
+        background-color: antiquewhite;
+        align-items: center;
+      }
+      .item {
+        width: 200px;
+        height: 200px;
+        background-color: blueviolet;
+        margin: 0 auto;
+        cursor: pointer;
+        cursor: move;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .2s ease-in;
+      }
+
+      .current {
+        position: absolute;
+      }
+    </style>
+    <title>2021-11-04</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item" id="test" draggable="true">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+    </div>
+  </body>
+  <script src="2021-11-04.js"></script>
+  <script>
+    const dom = document.querySelector('#test')
+    const domContainer = document.querySelector('.container')
+    domContainer.addEventListener('drop', (event) => {
+        console.log(event)
+    })
+    // dom.addEventListener('click', (event) => {
+    //   domContainer.addEventListener('mousemove', (event) => {
+    //     console.log(111)
+    //     dom.classList.add('current')
+    //     const left = event.clientX
+    //     const top = event.clientY
+    //     //设置div的偏移量
+    //     dom.style.left = left + 'px'
+    //     dom.style.top = top + 'px'
+    //   })
+    // })
+
+    dom.addEventListener('dragend', (event) => {
+      dom.classList.add('current')
+      const left = event.clientX
+      const top = event.clientY
+      //设置div的偏移量
+      dom.style.left = left + 'px'
+      dom.style.top = top + 'px'
+    })
+  </script>
+</html>
