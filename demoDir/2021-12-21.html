@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        padding: 0 0;
+        margin: 0 0;
+      }
+    </style>
+    <title>2021-12-21</title>
+  </head>
+  <body></body>
+  <script src="2021-12-21.js"></script>
+  <script>
+    const from = {
+      target: {
+        formItem: 'text_field_1640833172272',
+        actionType: 0,
+        actionStatus: 1,
+        actionVal: '',
+        actionVerifyStatus: 0
+      },
+      expr: [
+        {
+          key: '97affa6d-5478-4529-881d-bb1d771143cf',
+          rules: [
+            {
+              key: 'sub-5a9d6446-3691-49c2-8986-384dcab27ced',
+              rule: 'x < y',
+              referItem: 'text_field_1640833169707',
+              targetItem: 'text_field_1640833169707'
+            },
+            {
+              key: 'sub-f3aca3d9-45d4-4d9c-860e-40c18e0e88ad',
+              rule: 'x < y',
+              referItem: 'text_field_1640833169707',
+              targetItem: 'text_field_1640833169707'
+            }
+          ]
+        },
+        {
+          key: '035e306a-88f6-469b-a928-eff3bdffaf69',
+          rules: [
+            {
+              key: 'sub-80441f68-4f1c-4be8-824b-ef4010434c10',
+              rule: 'x < y',
+              referItem: 'text_field_1640767147959',
+              targetItem: 'text_field_1640770426108'
+            }
+          ]
+        }
+      ],
+      logicRules: [
+        {
+          key: '97affa6d-5478-4529-881d-bb1d771143cf',
+          logicPartnerKey: '035e306a-88f6-469b-a928-eff3bdffaf69',
+          logicRule: '&&',
+          childRules: [
+            {
+              key: 'sub-5a9d6446-3691-49c2-8986-384dcab27ced',
+              logicPartnerKey: 'sub-f3aca3d9-45d4-4d9c-860e-40c18e0e88ad',
+              logicRule: '&&'
+            }
+          ],
+          partnerChildRules: [
+            {
+              key: 'sub-80441f68-4f1c-4be8-824b-ef4010434c10',
+              logicPartnerKey: 'sub-80441f68-4f1c-4be8-824b-ef4010434c10',
+              logicRule: 'x'
+            }
+          ]
+        }
+      ]
+    }
+
+    // 解析 children规则
+    function transChildRuleFn(newVal, oldVal) {
+      newVal.key = oldVal.key
+      newVal.compareVal.formData.data.selectComponent = oldVal.targetItem
+      newVal.inputVal.formData.data.selectComponent = oldVal.referItem
+      newVal.conditionVal = oldVal.rule.replace('x', '').replace('y', '').trim()
+    }
+
+    function transLoginRules(logicRules, item, index) {
+      console.log(logicRules, item, index)
+    }
+
+    /*
+     * 先拷贝份数据  然后对expr进行遍历 遍历时候考虑情况
+     * 1.通过key值 查找对应的LogicRule来获取逻辑条件
+     * 2.
+     * 
+     */
+
+    function transformData(from) {
+      const newObj = JSON.parse(JSON.stringify(from.expr))
+      const expr = JSON.parse(JSON.stringify(from.expr))
+      const logicRules = JSON.parse(JSON.stringify(from.logicRules))
+      expr.forEach((item, index) => {
+        newObj[index] = {
+          logicRule: '',
+          key: item.key,
+          children: item.rules
+        }
+        // const ifLastItem = false
+        // 组和组最后一项应该去匹配 logicPartnerKey
+        let parentLogicRule
+        if (index === expr.length - 1) {
+          parentLogicRule = logicRules.find(
+            (element) => element.logicPartnerKey === item.key
+          )
+          parentLogicRule.isLastItem = true
+        } else {
+          parentLogicRule = logicRules.find(
+            (element) => element.key === item.key
+          )
+        }
+        // TODO: 如果只有一个数据的话
+        if (parentLogicRule) {
+          newObj[index].logicRule = parentLogicRule.logicRule
+            .replace('x', '')
+            .replace('y', '')
+            .trim()
+        }
+        item.rules.forEach((groupItem, groupIndex) => {
+          newObj[index].children[groupIndex] = {
+            compareVal: {
+              formData: {
+                type: '1',
+                data: {
+                  selectComponent: '',
+                  verifObject: 1
+                }
+              }
+            },
+            inputVal: {
+              formData: {
+                type: '1',
+                data: {
+                  selectComponent: '',
+                  verifObject: 1
+                }
+              }
+            },
+            childLogicRule: ''
+          }
+          // 解析childRules
+          if (parentLogicRule && !parentLogicRule.isLastItem) {
+            newObj[index].children[groupIndex].childLogicRule =
+              parentLogicRule.childRules
+                .find((element) => element.key === groupItem.key)
+                ?.logicRule.replace('x', '')
+                .replace('y', '')
+                .trim()
+          } else {
+            newObj[index].children[groupIndex].childLogicRule =
+              parentLogicRule.partnerChildRules
+                .find((element) => element.logicPartnerKey === groupItem.key)
+                ?.logicRule.replace('x', '')
+                .replace('y', '')
+                .trim()
+          }
+          transChildRuleFn(newObj[index].children[groupIndex], groupItem)
+          //
+        })
+      })
+      return newObj
+    }
+
+    console.log(transformData(from))
+  </script>
+</html>

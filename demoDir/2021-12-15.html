@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        padding: 0 0;
+        margin: 0 0;
+      }
+    </style>
+    <title>2021-12-15</title>
+  </head>
+  <body></body>
+  <script src="2021-12-15.js"></script>
+  <script>
+    const myFormData = [
+      {
+        logicRule: '&&',
+        children: [
+          {
+            inputVal: {
+              condition: 'input',
+              formData: {
+                selectComponent: 1639553018853,
+                compWhichNeed: 1
+              }
+            },
+            conditionVal: '<',
+            compareVal: {
+              condition: 'compare',
+              formData: {
+                compareType: '4',
+                data: {
+                  manualInputValue: '4'
+                }
+              }
+            },
+            ishasLogicRule: true,
+            childLogicRule: '&&'
+          },
+          {
+            inputVal: {
+              condition: 'input',
+              formData: {
+                selectComponent: 1639553018853,
+                compWhichNeed: 1
+              }
+            },
+            conditionVal: '<',
+            compareVal: {
+              condition: 'compare',
+              formData: {
+                compareType: '4',
+                data: {
+                  manualInputValue: '4'
+                }
+              }
+            },
+            ishasLogicRule: true,
+            childLogicRule: '&&'
+          }
+        ]
+      },
+      {
+        logicRule: '&&',
+        children: [
+          {
+            inputVal: {
+              condition: 'input',
+              formData: {
+                selectComponent: 1639553018853,
+                compWhichNeed: 1
+              }
+            },
+            conditionVal: '<=',
+            compareVal: {
+              condition: 'compare',
+              formData: {
+                compareType: '4',
+                data: {
+                  manualInputValue: '5'
+                }
+              }
+            },
+            ishasLogicRule: true,
+            childLogicRule: '&&'
+          }
+        ]
+      }
+    ]
+    const expr = [
+      [
+        {
+          rule: 'x < y', // 小于（比较规则）
+          referItem: 'formItemNameX', // 参考值，输入条件（表单内组件的字段名）
+          targetItem: 'formItemNameY' // 对比值，对比条件（表单内组件的字段名）,
+        },
+        {
+          rule: 'x < y', // 小于（比较规则）
+          referItem: 'formItemNameX', // 参考值，输入条件（表单内组件的字段名）
+          targetItem: 'formItemNameY' // 对比值，对比条件（表单内组件的字段名）,
+        },
+        {
+          rule: 'x < y', // 小于（比较规则）
+          referItem: 'formItemNameX', // 参考值，输入条件（表单内组件的字段名）
+          targetItem: 'formItemNameY' // 对比值，对比条件（表单内组件的字段名）,
+        }
+      ]
+    ]
+    const dataFormat = (myFormData, expr) => {
+      // 先转成
+      const newExpr = []
+      myFormData.forEach((item) => {
+        item.children &&
+          item.children.forEach((childItem) => {
+            newExpr.push({
+              referItem: `${childItem.inputVal.formData.selectComponent}`,
+              rule: `x ${childItem.conditionVal} y `,
+              // 这里我选中的值
+              targetItem: '????'
+            })
+          })
+      })
+      return myFormData
+    }
+    console.log(dataFormat(myFormData, expr))
+  </script>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        padding: 0 0;
+        margin: 0 0;
+      }
+      :root {
+        --backgroundColor: antiquewhite;
+        --move-x: 0px;
+        --move-y: 0px;
+      }
+      .container {
+        width: 400px;
+        height: 400px;
+        background-color: var(--backgroundColor);
+      }
+
+      .move {
+        width: 20px;
+        height: 20px;
+        background-color: rgb(27, 29, 128);
+        position: fixed;
+        border-radius: 50%;
+        left: var(--move-x);
+        top: var(--move-y);
+        transition: 0.05s all ease-in-out;
+      }
+
+      .animateEle {
+        width: 100px;
+        aspect-ratio: 1 / 1;
+        background-color: aquamarine;
+        margin: 0 auto;
+        animation: animEle .8s ease-in-out;
+      }
+
+      @keyframes animEle {
+        0% {
+          transform: scale(1, 1) translate(0, 0px);
+        }
+        20% {
+          transform: scale(1.13, 0.87) translate(0, 0px);
+        }
+        40% {
+          transform: scale(0.92, 1.08) translate(0, -40px);
+        }
+        60% {
+            transform: scale(1.05, 0.95) translate(0, 0px);
+        }
+        80% {
+            transform: scale(0.98, 1.02) translate(0, -20px);
+        }
+        100% {
+            transform: scale(1, 1) translate(0, 0px);
+        }
+      }
+    </style>
+    <title>2021-12-01 css 自定义属性</title>
+  </head>
+  <body>
+    <div class="container">css 属性</div>
+    <div class="move"></div>
+    <div class="animateEle"></div>
+  </body>
+  <script src="2021-12-01.js"></script>
+  <script>
+    // let root = document.documentElement
+    // root.addEventListener('mousemove', (e) => {
+    //   root.style.setProperty('--move-x', e.clientX + 'px')
+    //   root.style.setProperty('--move-y', e.clientY + 'px')
+    // })
+  </script>
+</html>

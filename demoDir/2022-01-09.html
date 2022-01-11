@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        padding: 0 0;
+        margin: 0 0;
+      }
+    </style>
+    <title>2022-01-09</title>
+  </head>
+  <body></body>
+  <script src="2022-01-09.js"></script>
+  <script>
+    const test = {
+      label: '多行文本',
+      alias: 'FDoubleText',
+      id: 1641542615327,
+      formItem: {
+        advanced:
+          '{"aloneComp":true,"isValid":true,"resizeable":"none","style":{"height":95,"width":200}}',
+        aloneComp: true,
+        content: null,
+        createId: null,
+        createTime: null,
+        gitUrl: null,
+        icon: '/enn_oss/ennew-dev/public/qT8I30Ep8LClHsA9/LCDP/0.0.1_duohangwenben.svg',
+        isCommon: false,
+        isValid: true,
+        jsConfUrl:
+          'https://cdn-lcap.icomecloud.com/dev_/0.0.3_FDoubleTextConfig.js',
+        jsMobileUrl:
+          '/enn_oss/ennew-dev/public/qT8I30Ep8LClHsA9/LCDP/0.0.1_FDoubleText.js',
+        jsUrl: 'https://cdn-lcap.icomecloud.com/dev_/0.0.3_FDoubleText.js',
+        moduleId: 52,
+        moduleTypeId: 0,
+        name: '多行文本',
+        resizeable: 'none',
+        ssrUrl: '',
+        style: { height: 95, position: null, width: 200, top: 0, left: 0 },
+        tenantId: null,
+        value: 'FDoubleText',
+        props: {
+          field: { value: 'text_field_1641542615326', status: 'enable' },
+          textConfig: {
+            titleVal: '多行文本',
+            placeVal: '请输入',
+            descVal: '',
+            sourceType: 1,
+            stateVal: 1,
+            limitNumber: 100,
+            handResetVal: '',
+            dataLinkDialog: false,
+            sourceDataList: {
+              apiTitle: 0,
+              apiAddress: '',
+              apiItems: {},
+              checkedId: '',
+              checkedValue: '',
+              valuePath: []
+            }
+          },
+          rulesConfig: [
+            {
+              required: false,
+              message: '',
+              trigger: 'blur',
+              filedValue: 'required',
+              type: 'string'
+            },
+            {
+              required: false,
+              min: '',
+              message: '请输入设置内的最小长度',
+              trigger: 'blur',
+              filedValue: 'min',
+              type: 'string'
+            },
+            {
+              required: false,
+              max: '',
+              message: '请输入设置内的最大长度',
+              trigger: 'blur',
+              filedValue: 'max',
+              type: 'string'
+            }
+          ]
+        },
+        id: 1641542615327,
+        parentId: 1641542615326,
+        actionSetting: {
+          actionRules: {
+            click: {
+              isExpanded: false,
+              isActive: false,
+              rules: [
+                {
+                  name: '自定义设置数值',
+                  type: 1,
+                  rule: {
+                    target: {
+                      type: 'FNumber',
+                      payload: {
+                        mutation: 1641542616545,
+                        actionType: 0,
+                        actionStatus: 0,
+                        actionVal: 'swsw',
+                        actionVerifyStatus: 0
+                      }
+                    },
+                    expr: [
+                      {
+                        key: '316c7906-1b65-4f41-a0f9-a7fa0d3db9b5',
+                        rules: [
+                          {
+                            key: 'sub-8433c1e8-7329-46b5-875d-df3742e6b58d',
+                            referSceneType: 0,
+                            targetSceneType: 1,
+                            rule: 'x < y',
+                            referItem: { id: 1641542615327 },
+                            targetItem: { id: 1641542615327, compareType: 0 }
+                          }
+                        ]
+                      },
+                      {
+                        key: '27fd6262-b30e-49fd-bd75-ee28675fa1f8',
+                        rules: [
+                          {
+                            key: 'sub-62e6f6e1-ecdf-47bf-82ef-4b80141bae1b',
+                            referSceneType: 0,
+                            targetSceneType: 1,
+                            rule: 'x == y',
+                            referItem: { id: 1641542615327 },
+                            targetItem: { id: 1641542615327, compareType: 0 }
+                          }
+                        ]
+                      }
+                    ],
+                    logicRules: [
+                      {
+                        key: '316c7906-1b65-4f41-a0f9-a7fa0d3db9b5',
+                        logicPartnerKey: '27fd6262-b30e-49fd-bd75-ee28675fa1f8',
+                        logicRule: 'x and y',
+                        childRules: [
+                          {
+                            key: 'sub-8433c1e8-7329-46b5-875d-df3742e6b58d',
+                            logicPartnerKey:
+                              'sub-8433c1e8-7329-46b5-875d-df3742e6b58d',
+                            logicRule: 'x and y'
+                          }
+                        ],
+                        partnerChildRules: [
+                          {
+                            key: 'sub-62e6f6e1-ecdf-47bf-82ef-4b80141bae1b',
+                            logicPartnerKey:
+                              'sub-62e6f6e1-ecdf-47bf-82ef-4b80141bae1b',
+                            logicRule: 'x and y'
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  name: '自定义设置数值',
+                  type: 1,
+                  rule: {
+                    target: {
+                      type: 'FNumber',
+                      payload: {
+                        mutation: 1641542616545,
+                        actionType: 0,
+                        actionStatus: 1,
+                        actionVal: '122',
+                        actionVerifyStatus: 0
+                      }
+                    },
+                    expr: [
+                      {
+                        key: 'd4236b6a-d10b-450e-87f9-5978dbdc6db7',
+                        rules: [
+                          {
+                            key: 'sub-0f048ba2-cf0e-4505-87af-f22c97d99d33',
+                            referSceneType: 0,
+                            targetSceneType: 2,
+                            rule: 'x < y',
+                            referItem: { id: 1641542615327 },
+                            targetItem: { val: '1234' }
+                          },
+                          {
+                            key: 'sub-8baec665-c79f-48c4-bfa3-467210f7fca5',
+                            referSceneType: 0,
+                            targetSceneType: 1,
+                            rule: 'x < y',
+                            referItem: { id: 1641542615327 },
+                            targetItem: { id: 1641542615327, compareType: 0 }
+                          }
+                        ]
+                      },
+                      {
+                        key: '38646db7-964d-41c6-94cd-44db396ae8d9',
+                        rules: [
+                          {
+                            key: 'sub-930b68a1-80f0-465e-8d2d-b7d82cf6759e',
+                            referSceneType: 0,
+                            targetSceneType: 1,
+                            rule: 'x < y',
+                            referItem: { id: 1641542615327 },
+                            targetItem: { id: 1641542615327, compareType: 0 }
+                          },
+                          {
+                            key: 'sub-05d9dd1f-c612-49de-81e5-6075a4b7dcb6',
+                            referSceneType: 0,
+                            targetSceneType: 1,
+                            rule: 'x < y',
+                            referItem: { id: 1641542616545 },
+                            targetItem: { id: 1641542615327, compareType: 0 }
+                          }
+                        ]
+                      }
+                    ],
+                    logicRules: [
+                      {
+                        key: 'd4236b6a-d10b-450e-87f9-5978dbdc6db7',
+                        logicPartnerKey: '38646db7-964d-41c6-94cd-44db396ae8d9',
+                        logicRule: 'x and y',
+                        childRules: [
+                          {
+                            key: 'sub-0f048ba2-cf0e-4505-87af-f22c97d99d33',
+                            logicPartnerKey:
+                              'sub-8baec665-c79f-48c4-bfa3-467210f7fca5',
+                            logicRule: 'x and y'
+                          }
+                        ],
+                        partnerChildRules: [
+                          {
+                            key: 'sub-05d9dd1f-c612-49de-81e5-6075a4b7dcb6',
+                            logicPartnerKey:
+                              'sub-930b68a1-80f0-465e-8d2d-b7d82cf6759e',
+                            logicRule: 'x and y'
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            blur: { isExpanded: false, isActive: false, rules: [] },
+            focus: { isExpanded: false, isActive: false, rules: [] },
+            change: {
+              isExpanded: true,
+              isActive: true,
+              rules: [
+                {
+                  name: '自定义设置数值',
+                  type: 1,
+                  rule: {
+                    target: {
+                      type: 'FNumber',
+                      payload: {
+                        mutation: 1641542616545,
+                        actionType: 0,
+                        actionStatus: 0,
+                        actionVal: '1221',
+                        actionVerifyStatus: 0
+                      }
+                    },
+                    expr: [
+                      {
+                        key: '8a04e041-5c84-4af2-9e67-8bf9cd12f183',
+                        rules: [
+                          {
+                            key: 'sub-e1c07e4e-bc84-487c-80b7-1f74d08aed78',
+                            referSceneType: 0,
+                            targetSceneType: 1,
+                            rule: 'x < y',
+                            referItem: { id: 1641542615327 },
+                            targetItem: { id: 1641542615327, compareType: 0 }
+                          }
+                        ]
+                      }
+                    ],
+                    logicRules: [
+                      {
+                        key: '8a04e041-5c84-4af2-9e67-8bf9cd12f183',
+                        logicPartnerKey: '8a04e041-5c84-4af2-9e67-8bf9cd12f183',
+                        logicRule: 'x and y',
+                        childRules: [
+                          {
+                            key: 'sub-e1c07e4e-bc84-487c-80b7-1f74d08aed78',
+                            logicPartnerKey:
+                              'sub-e1c07e4e-bc84-487c-80b7-1f74d08aed78',
+                            logicRule: 'x and y'
+                          }
+                        ],
+                        partnerChildRules: []
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          supportEvents: ['click', 'blur', 'focus', 'change']
+        }
+      }
+    }
+    // 表单内组件项对应的配置动作映射
+    const componentConfigInfo = {
+      FSingleText: '135',
+      FDoubleText: '125',
+      FNumber: '135',
+      FFiles: '156',
+      FRadio: '145',
+      FCheckbox: '145',
+      FImage: '156',
+      FDropDownRadio: '145',
+      FCheckSelect: '145',
+      FDatePicker: '157',
+      FDateRangePicker: '157'
+    }
+
+    const componentConfigMappingField = {
+      1: 'actionStatus',
+      2: 'actionVal',
+      3: 'actionVal',
+      4: '',
+      5: 'actionVerifyStatus'
+    }
+
+    function compVerificationField(comp, currentData) {
+      const initialData = {
+        actionType: -1,
+        actionStatus: '',
+        actionVal: '',
+        actionVerifyStatus: -1
+      }
+      const result = componentConfigInfo[comp.alias]
+        .split('')
+        .map((item) => componentConfigMappingField[+item])
+      for (let i = 0; i < result.length; i++) {
+        if (initialData[result[i]] === currentData[result[i]]) {
+          return false
+        }
+      }
+      return true
+    }
+    console.log(
+      compVerificationField(test, {
+        actionStatus: '1',
+        actionVal: '1',
+        actionVerifyStatus: 0
+      })
+    )
+  </script>
+</html>

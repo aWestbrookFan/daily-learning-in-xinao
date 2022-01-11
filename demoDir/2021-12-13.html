@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        padding: 0 0;
+        margin: 0 0;
+      }
+    </style>
+    <title>2021-12-13</title>
+  </head>
+  <body></body>
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <script src="2021-12-13.js"></script>
+  <script>
+    console.log(window.$)
+    var settings = {
+      url: 'http://fn-cloud-visual-configuration.test.fnwintranet.com/bottom/updateBottomConfig',
+      method: 'GET',
+      timeout: 0,
+      headers: {
+        enId: '1366286212466061314',
+        ticket:
+          'MTQxODU3OTM2MDU1NDkwOTY5NyNFRUI2REE4MS01RDY3LTREOTctODI3Ny1EMEQ1RjZFRDUxM0UPC',
+        'Content-Type': 'application/json'
+      },
+      data: JSON.stringify({
+        entId: '',
+        id: '',
+        tabStyles: [
+          {
+            id: null,
+            tabName: '首页',
+            iconUrl: null,
+            uncheckUrl: null,
+            style: false,
+            url: null,
+            status: false,
+            type: '1',
+            pageSort: 1
+          },
+          {
+            id: null,
+            tabName: '消息',
+            iconUrl: null,
+            uncheckUrl: null,
+            style: false,
+            url: null,
+            status: null,
+            type: '2',
+            pageSort: 2
+          },
+          {
+            id: null,
+            tabName: '工具箱',
+            iconUrl: null,
+            uncheckUrl: null,
+            style: false,
+            url: null,
+            status: false,
+            type: '3',
+            pageSort: 3
+          },
+          {
+            iconUrl: '',
+            id: '',
+            pageSort: 4,
+            status: true,
+            style: false,
+            tabName: '哈哈',
+            type: '5',
+            uncheckUrl: '',
+            url: ''
+          }
+        ]
+      })
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response)
+    })
+  </script>
+</html>

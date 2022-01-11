@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        padding: 0 0;
+        margin: 0 0;
+      }
+    </style>
+    <title>2021-12-24</title>
+  </head>
+  <body></body>
+  <script src="2021-12-24.js"></script>
+  <script>
+    function uuid() {
+      const s = []
+      const hexDigits = '0123456789abcdef'
+      for (let i = 0; i < 36; i++) {
+        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1)
+      }
+      s[14] = '4'
+      s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1)
+      s[8] = s[13] = s[18] = s[23] = '-'
+      const uuid = s.join('')
+      return uuid
+    }
+    const from = {
+      actionList: [
+        {
+          logicRule: '&&',
+          key: '1840332a-2bd4-40b5-8702-a6c5a8132e60',
+          children: [
+            {
+              key: 'sub-575882f6-c063-4fda-9364-e955f08783a8',
+              inputVal: {
+                condition: 'input',
+                formData: {
+                  type: '1',
+                  data: {
+                    selectComponent: 'text_field_1640833169707',
+                    verifObject: 1
+                  }
+                }
+              },
+              conditionVal: '<',
+              compareVal: {
+                condition: 'compare',
+                formData: {
+                  type: '1',
+                  data: {
+                    selectComponent: 'text_field_1640833169707',
+                    verifObject: 1,
+                    state: ''
+                  }
+                }
+              },
+              childLogicRule: '&&'
+            }
+          ]
+        },
+        {
+          logicRule: '&&',
+          key: 'eed4141d-309e-45a2-94b7-4a4ee7630109',
+          children: [
+            {
+              key: 'sub-2d928964-d3ba-4b1b-96c9-dc0a15672416',
+              inputVal: {
+                condition: 'input',
+                formData: {
+                  type: '1',
+                  data: {
+                    selectComponent: 'text_field_1640767147959',
+                    verifObject: 1
+                  }
+                }
+              },
+              conditionVal: '<',
+              compareVal: {
+                condition: 'compare',
+                formData: {
+                  type: '1',
+                  data: {
+                    selectComponent: 'text_field_1640767147959',
+                    verifObject: 1,
+                    state: ''
+                  }
+                }
+              },
+              childLogicRule: '&&'
+            }
+          ]
+        }
+      ],
+      // 就有一个组中有一个条件
+      actionList1: [
+        {
+          logicRule: '&&',
+          key: '883d8399-536f-494a-95f5-6600467c2fbf',
+          children: [
+            {
+              key: 'sub-6c6147ca-5152-4df6-a941-3382bc6800f6',
+              conditionVal: '<',
+              childLogicRule: '&&'
+            }
+          ]
+        }
+      ],
+      actionConfig: {
+        actionStatus: 2,
+        actionVal: '123',
+        actionVerifyStatus: 0
+      },
+      currentComponent: {
+        label: '数值C',
+        id: 'text_field_1640073392795',
+        formItem: {
+          advanced:
+            '{"aloneComp":true,"isValid":true,"resizeable":"none","style":{"height":65,"width":200}}',
+          aloneComp: true,
+          content: null,
+          createId: null,
+          createTime: null,
+          gitUrl: null,
+          icon: '/enn_oss/ennew-dev/public/qT8I30Ep8LClHsA9/LCDP/0.0.1_shuzhi.svg',
+          isCommon: false,
+          isValid: true,
+          jsConfUrl:
+            '/enn_oss/ennew-dev/public/qT8I30Ep8LClHsA9/LCDP/0.0.2_FNumberConfig.js',
+          jsMobileUrl:
+            '/enn_oss/ennew-dev/public/qT8I30Ep8LClHsA9/LCDP/0.0.1_FNumber.js',
+          jsUrl:
+            '/enn_oss/ennew-dev/public/qT8I30Ep8LClHsA9/LCDP/0.0.2_FNumber.js',
+          moduleId: 53,
+          moduleTypeId: 0,
+          name: '数值',
+          resizeable: 'none',
+          ssrUrl: '',
+          style: {
+            height: 65,
+            position: null,
+            width: 200
+          },
+          tenantId: null,
+          value: 'FNumber',
+          props: {
+            field: {
+              value: 'text_field_1640073392795',
+              status: 'enable'
+            },
+            textConfig: {
+              titleVal: '数值C',
+              placeVal: '请输入',
+              descVal: '',
+              sourceType: 1,
+              stateVal: 1,
+              unitVal: '',
+              pointVal: '',
+              handResetVal: '',
+              dataLinkDialog: false,
+              sourceDataList: {
+                apiTitle: 0,
+                apiAddress: '',
+                apiItems: {},
+                checkedId: '',
+                checkedValue: '',
+                valuePath: []
+              }
+            },
+            rulesConfig: [
+              {
+                required: false,
+                message: '',
+                trigger: 'blur',
+                filedValue: 'required',
+                type: 'string'
+              },
+              {
+                required: false,
+                min: '',
+                message: '请输入设置内的最小长度',
+                trigger: 'blur',
+                filedValue: 'min',
+                type: 'string'
+              },
+              {
+                required: false,
+                max: '',
+                message: '请输入设置内的最大长度',
+                trigger: 'blur',
+                filedValue: 'max',
+                type: 'string'
+              }
+            ]
+          },
+          id: 1640073392796,
+          parentId: 1640073392795,
+          actionSetting: {}
+        }
+      }
+    }
+
+    // 动作配置组件数据转换成渲染端数据
+    function transformEditorToRender(initialData) {
+      const dataClone = JSON.parse(JSON.stringify(initialData))
+      // 渲染需要的格式
+      const renderFormat = {
+        target: {},
+        expr: [],
+        logicRule: []
+      }
+      // 组合 target
+      renderFormat.target = Object.assign(dataClone.actionConfig, {
+        formItem: dataClone.currentComponent.id,
+        actionType: 0
+      })
+      // 组合 expr 表达式
+      const newExpr = []
+      dataClone.actionList.forEach((item, index) => {
+        newExpr.push({
+          key: item.key,
+          rules: []
+        })
+        item.children.forEach((groupItem, groupIndex) => {
+          newExpr[index].rules.push({
+            key: groupItem.key,
+            rule: `x ${groupItem.conditionVal} y`,
+            referItem: groupItem.inputVal.formData.data.selectComponent,
+            targetItem: groupItem.compareVal.formData.data.selectComponent
+          })
+        })
+      })
+      renderFormat.expr = newExpr
+      renderFormat.logicRule = transformEditorTologicRule(dataClone)
+      return renderFormat
+    }
+    /**
+     * 结构 < 2 时候进行单独处理
+     *
+     */
+    function transformEditorTologicRule(initialData) {
+      const groupAddRule = (
+        target,
+        key,
+        logicPartnerKey,
+        logicRule,
+        childRules,
+        partnerChildRules
+      ) => {
+        target.push({
+          key,
+          logicPartnerKey,
+          logicRule,
+          childRules,
+          partnerChildRules
+        })
+      }
+      const conditionAddRule = (target, key, logicPartnerKey, logicRule) => {
+        target.push({
+          key,
+          logicPartnerKey,
+          logicRule
+        })
+      }
+      const structure = initialData.actionList
+      const structureLength = structure.length
+      if (!structureLength) {
+        return []
+      }
+      const resultRule = []
+      structure.forEach((parentItem, parentIndex, parentArray) => {
+        if (structureLength === 1) {
+          groupAddRule(resultRule, parentItem.key, parentItem.key, 'x', [], [])
+          parentItem.children.forEach((item, index) => {
+            const parentItemLen = parentItem.children.length
+            if (parentItemLen >= 2 && index + 1 <= parentItemLen - 1) {
+              resultRule[parentIndex].childRules.push({
+                key: item.key,
+                logicPartnerKey: parentItem.children[index + 1].key,
+                logicRule: item.childLogicRule
+              })
+            } else if (parentItemLen === 1) {
+              resultRule[parentIndex].childRules.push({
+                key: item.key,
+                logicPartnerKey: item.key,
+                logicRule: 'x'
+              })
+            }
+          })
+        }
+        if (structureLength >= 2 && parentIndex + 1 <= structureLength - 1) {
+          groupAddRule(
+            resultRule,
+            parentItem.key,
+            structure[parentIndex + 1].key,
+            parentItem.logicRule,
+            [],
+            []
+          )
+          parentItem.children.forEach((item, index) => {
+            const parentItemLen = parentItem.children.length
+            if (parentItemLen >= 2 && index + 1 <= parentItemLen - 1) {
+              conditionAddRule(
+                resultRule[parentIndex].childRules,
+                item.key,
+                parentItem.children[index + 1].key,
+                item.childLogicRule
+              )
+            } else if (parentItemLen === 1) {
+              conditionAddRule(
+                resultRule[parentIndex].childRules,
+                item.key,
+                item.key,
+                'x'
+              )
+            }
+          })
+          parentArray[parentIndex + 1].children.forEach((item, index) => {
+            const parentNextItem = parentArray[parentIndex + 1].children
+            if (
+              parentNextItem.length >= 2 &&
+              index + 1 <= parentNextItem.length - 1
+            ) {
+              conditionAddRule(
+                resultRule[parentIndex].partnerChildRules,
+                parentNextItem[index + 1].key,
+                item.key,
+                item.childLogicRule
+              )
+            } else if (parentNextItem.length === 1) {
+              conditionAddRule(
+                resultRule[parentIndex].partnerChildRules,
+                item.key,
+                item.key,
+                'x'
+              )
+            }
+          })
+        }
+      })
+      return resultRule
+    }
+
+    console.log(transformEditorToRender(from))
+  </script>
+</html>
