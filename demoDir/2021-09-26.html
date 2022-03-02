@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            padding: 0 0;
+            margin: 0 0;
+        }
+
+        .custom {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(104, 1, 189);
+            margin-top: 10px;
+
+        }
+
+        .b {
+            transition: all 1s ease-in;
+        }
+
+        .c {
+            transition: all 1s ease-in 1s;
+        }
+
+        .d {
+            transition: all 1s ease-in 2s;
+        }
+    </style>
+    <title>2021-09-26</title>
+</head>
+
+<body>
+    <!-- 自定义事件 -->
+    <div class="custom a"></div>
+    <div class="custom b"></div>
+    <div class="custom c"></div>
+    <div class="custom d"></div>
+</body>
+<script src="2021-09-26.js"></script>
+<script>
+    // 示例1
+    let a = document.querySelector('div.a')
+    let b = document.querySelector('.b')
+    let c = document.querySelector('.c')
+    let d = document.querySelector('.d')
+    
+    a.addEventListener('click', function () {
+        let clickA = new CustomEvent("clickA", { 'detail': '123' })
+        document.dispatchEvent(clickA);
+    })
+    document.addEventListener('clickA', function (e) {
+        console.log(e)
+        b.style.width = '40%'
+        c.style.width = '60%'
+        d.style.width = '80%'
+        d.style.width = '80%'
+    })
+
+    // 实例2
+</script>
+
+</html>

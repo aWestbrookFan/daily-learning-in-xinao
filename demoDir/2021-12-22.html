@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        padding: 0 0;
+        margin: 0 0;
+      }
+    </style>
+    <title>2021-12-22</title>
+  </head>
+  <body></body>
+  <script src="2021-12-22.js"></script>
+  <script>
+    const startData = {
+      actionList: [
+        {
+          logicRule: '&&',
+          children: [
+            {
+              inputVal: {
+                condition: 'input',
+                formData: {
+                  type: '1',
+                  data: {
+                    selectComponent: 'text_field_1639915908127',
+                    verifObject: 1
+                  }
+                }
+              },
+              conditionVal: '==',
+              compareVal: {
+                condition: 'compare',
+                formData: {
+                  type: '1',
+                  data: {
+                    selectComponent: 'text_field_1639915908127',
+                    verifObject: 1,
+                    state: ''
+                  }
+                }
+              },
+              childLogicRule: '&&'
+            },
+            {
+              inputVal: {
+                condition: 'input',
+                formData: {
+                  type: '1',
+                  data: {
+                    selectComponent: 'text_field_1640073392795',
+                    verifObject: 1
+                  }
+                }
+              },
+              conditionVal: '!=',
+              compareVal: {
+                condition: 'compare',
+                formData: {
+                  type: '1',
+                  data: {
+                    selectComponent: 'text_field_1640073392795',
+                    verifObject: 1,
+                    state: ''
+                  }
+                }
+              },
+              childLogicRule: '&&'
+            }
+          ]
+        },
+        {
+          logicRule: '&&',
+          children: [
+            {
+              inputVal: {
+                condition: 'input',
+                formData: {
+                  type: '1',
+                  data: {
+                    selectComponent: 'text_field_1640073392795',
+                    verifObject: 1
+                  }
+                }
+              },
+              conditionVal: '<',
+              compareVal: {
+                condition: 'compare',
+                formData: {
+                  type: '1',
+                  data: {
+                    selectComponent: 'text_field_1639915908127',
+                    verifObject: 1,
+                    state: ''
+                  }
+                }
+              },
+              childLogicRule: '&&'
+            }
+          ]
+        }
+      ],
+      actionConfig: {
+        actionStatus: '1',
+        actionVal: '5',
+        actionVerifyStatus: 1
+      },
+      currentComponent: {
+        label: '数值C',
+        id: 'text_field_1640073392795',
+        formItem: {}
+      }
+    }
+
+    function uuid() {
+      let s = []
+      let hexDigits = '0123456789abcdef'
+      for (let i = 0; i < 36; i++) {
+        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1)
+      }
+      s[14] = '4'
+      s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1)
+      s[8] = s[13] = s[18] = s[23] = '-'
+      let uuid = s.join('')
+      return uuid
+    }
+
+    function transformEditorToRender(startData) {
+      const dataClone = JSON.parse(JSON.stringify(startData))
+      // 渲染需要的格式
+      let renderFormat = {
+        target: {},
+        expr: [],
+        logicRule: []
+      }
+      // 组合 target
+      renderFormat.target = Object.assign(
+        { formItem: dataClone.currentComponent.id, actionType: 0 },
+        dataClone.actionConfig
+      )
+      // 组合 expr 表达式
+      const newExpr = []
+      dataClone.actionList.forEach((item, index) => {
+        newExpr.push({
+          key: uuid() + `-${index}`,
+          rules: []
+        })
+        item.children.forEach((groupItem, groupIndex) => {
+          newExpr[index].rules.push({
+            key: `sub-${uuid()}-${groupIndex}`,
+            rule: `x ${groupItem.childLogicRule} y`,
+            referItem: groupItem.inputVal.formData.data.selectComponent,
+            targetItem: groupItem.compareVal.formData.data.selectComponent
+          })
+        })
+      })
+      console.log(newExpr)
+      return renderFormat
+    }
+
+    transformEditorToRender(startData)
+  </script>
+</html>
